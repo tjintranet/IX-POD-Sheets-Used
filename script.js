@@ -134,7 +134,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Calculate total sheets (simplex + duplex)
                     const simplexCount = parseInt(row[simplexKey] || '0', 10);
                     const duplexCount = parseInt(row[duplexKey] || '0', 10);
-                    newRecord.Sheets = (simplexCount + duplexCount).toString();
+                    // Divide the total by 2
+                    const totalSheets = (simplexCount + duplexCount) / 2;
+                    newRecord.Sheets = Math.round(totalSheets).toString();
                     
                     // Set media name
                     newRecord.Media = row[mediaNameKey];
